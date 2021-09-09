@@ -1,4 +1,4 @@
-PLUGIN_BINARY=hello-driver
+PLUGIN_BINARY=example/files/minecraft
 export GO111MODULE=on
 
 default: build
@@ -9,3 +9,7 @@ clean: ## Remove build artifacts
 
 build:
 	go build -o ${PLUGIN_BINARY} .
+
+dev: build
+	shipyard taint nomad_cluster.dev
+	shipyard run example
